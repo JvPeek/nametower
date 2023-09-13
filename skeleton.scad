@@ -80,3 +80,14 @@ module topSkeleton() {
     skeleton(topNotches=false);
     
 }
+module regularSkeleton() {
+    difference() {
+        skeleton();
+        difference() {
+            cylinder(h=height+wall+overlap*2, r=sideSize/2-55, $fn=sides);
+            cylinder(h=height+wall+overlap*2, r=innerTube+13, $fn=sides);
+            
+        }
+        
+    }
+}

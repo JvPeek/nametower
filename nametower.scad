@@ -2,11 +2,7 @@ include <MCAD/stepper.scad>
 
 include <rendering.scad>
 
-include <skeleton.scad>
-include <nametags.scad>
-include <base.scad>
-include <frame.scad>
-render="base";
+render="tower";
 name="s1cc3sT";
 sides=6;
 sideSize=335-50;
@@ -30,10 +26,20 @@ bearingHeight=7;
 //https://www.kugellager-shop.net/mr-61710-2rs-61710rs-kugellager-62x50x6.html
 shelfWalls=20;
 shelfSize=[335,390,335];
+slipRingStatorLength=36;
+slipRingStatorFrontLength=6;
+slipRingStatorDia=32.8;
+slipRingStatorMountDia=44.8;
+slipRingRotorLength=8;
+slipRingRotorDia=9.9;
+
+
+
+//https://www.amazon.de/3-Draht-Schleifring-Mini-Schleifring-Dr%C3%A4hte-Windkraftanlage/dp/B07KW68JSF
 
 module nema() {
 
-      translate([0,0,39+1.9])
+    translate([0,0,39+1.9])
     rotate([0,180,0])  motor(Nema17, NemaMedium, dualAxis=false);
 
 }

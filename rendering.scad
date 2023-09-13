@@ -1,4 +1,9 @@
 include <tools.scad>
+
+include <skeleton.scad>
+include <nametags.scad>
+include <base.scad>
+include <frame.scad>
 module shelf() {
     translate([0,0,shelfSize[2]/2-overlap*2])
     color([1,1,1])
@@ -23,11 +28,11 @@ module level(level=1) {
             
             clips();
             translate([0,0,0])
-            if (level == 0) {
+            if (level == 1) {
                 baseSkeleton();
             }
-            if (level != 0 && level != levels-1) {
-                skeleton();
+            if (level >= 2 && level != levels-1) {
+                regularSkeleton();
             }
             if (level == levels-1) {
                 topSkeleton();
@@ -54,7 +59,7 @@ module render(render, cutopen=false) {
         }
 
         if (render=="tower") {
-            shelf();
+            *shelf();
             union() {
                 translate([0,0,baseHeight])
                 for (a=[0:levels-1]) {
@@ -80,10 +85,8 @@ module render(render, cutopen=false) {
             nametag(name, true);
         }
 
-        if (render=="parts") {
-            baseSkeleton();
-            translate([sideSize+100,0,0]);
-            skeleton();
+        if (render=="skeleton") {
+            regularSkeleton();
         }
         if (cutopen) {
             translate([0,0,-overlap])
