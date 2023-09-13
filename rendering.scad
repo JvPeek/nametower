@@ -4,6 +4,9 @@ include <skeleton.scad>
 include <nametags.scad>
 include <base.scad>
 include <frame.scad>
+include <MCAD/stepper.scad>
+include <MCAD/gears.scad>
+
 module shelf() {
     translate([0,0,shelfSize[2]/2-overlap*2])
     color([1,1,1])
@@ -28,8 +31,11 @@ module level(level=1) {
             
             clips();
             translate([0,0,0])
-            if (level == 1) {
+            if (level == 0) {
                 baseSkeleton();
+            }
+            if (level == 1) {
+                skeleton();
             }
             if (level >= 2 && level != levels-1) {
                 regularSkeleton();
@@ -59,7 +65,8 @@ module render(render, cutopen=false) {
         }
 
         if (render=="tower") {
-            *shelf();
+            shelf();
+            rotate([0,0,$t*360/6])
             union() {
                 translate([0,0,baseHeight])
                 for (a=[0:levels-1]) {

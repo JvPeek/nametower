@@ -1,4 +1,3 @@
-include <MCAD/stepper.scad>
 
 include <rendering.scad>
 
@@ -34,6 +33,8 @@ slipRingRotorLength=8;
 slipRingRotorDia=9.9;
 
 
+    taperedBearingDia = 72.4;
+    taperedBearingHeight = 20.75;
 
 //https://www.amazon.de/3-Draht-Schleifring-Mini-Schleifring-Dr%C3%A4hte-Windkraftanlage/dp/B07KW68JSF
 
