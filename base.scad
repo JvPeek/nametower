@@ -21,7 +21,7 @@ module base()
         pulleyCAD(model = "GT2 2mm", teethCount = 140, beltWidth = 12, shaftDiameter = 2, pulleyDiameter = 100,
                   retainerHeight = 0, idlerHeight = 0, baseDiameter = 10, baseHeight = wall-overlap);
 
-        cylinder(h = taperedBearingHeight + overlap * 2, r = taperedBearingDia / 2 + wall * 2);
+        cylinder(h = taperedBearingFullHeight + overlap * 2, r = taperedBearingDia / 2 + wall * 2);
     }
 
    // translate([ 0, 0, wall + baseGap ]) baseSkeleton();
