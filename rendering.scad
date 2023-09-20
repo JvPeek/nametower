@@ -97,12 +97,16 @@ module render(render, cutopen = false)
 
         if (render == "nametag")
         {
-            translate([ 0, 0, -19 ]) nametag(name, true);
+            translate([ 0, 0, -19 ]) nametag(name, false);
         }
 
         if (render == "skeleton")
         {
             regularSkeleton();
+        }
+        if (render == "frame") {
+            singleSegment(sides=6)
+            frame();
         }
         if (cutopen)
         {
