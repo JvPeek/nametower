@@ -38,13 +38,15 @@ module frame()
                 rotate([ 90, 0, 0 ]) translate([ -50, height - 5, 0 ]) cylinder(sideSize, 1.5);
             }
         }
+        cutoutSize=[20,6.5];
         translate([0,0,wall+height*.75])
         rotate([ 0, 0, 45 ])
+
         rotate([0,90,0]) hull()
         {
             $fn=50;
-            translate([ 0, -7.5, 0 ]) cylinder(h = 1000, r = 5 / 2);
-            translate([ 0, 7.5, 0 ]) cylinder(h = 1000, r = 5 / 2);
+            translate([ 0, -(cutoutSize[0]/2-cutoutSize[1]/2), 0 ]) cylinder(h = 1000, r = cutoutSize[1] / 2);
+            translate([ 0, (cutoutSize[0]/2-cutoutSize[1]/2), 0 ]) cylinder(h = 1000, r = cutoutSize[1] / 2);
         }
     }
 }
