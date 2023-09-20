@@ -3,11 +3,11 @@ module nametags() {
         
     difference() {
         linear_extrude(height)
-        ring(gap=10.5, shell=nametagDepth);
+        ring(gap=10.2, shell=nametagDepth);
 
         translate([0,0,wall-overlap])
         linear_extrude(height+overlap*2-wall*2)
-        ring(gap=10+wall*2, sideSize=sideSize-thinWall, empty=false);
+        ring(gap=10.2+wall*2, sideSize=sideSize-thinWall, empty=false);
     }
     
 }
