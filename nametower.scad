@@ -1,46 +1,5 @@
+include <options.scad>
 include <rendering.scad>
-
-render = "tower";
-name = "s1cc3sT";
-shelf = false;
-cutopen = true;
-sides = 6;
-sideSize = 335 - 50;
-levels = 6;
-gap = 5;
-thinWall = 1.2;
-height = 50;
-wall = 3;
-nametagDepth = 6;
-overlap = 0.01;
-stripSize = 12;
-ledDistance = 30;
-clipHeight = 20;
-rotationOffset = 0;
-innerTube = 40;
-outerTube = 62.5;
-bearingHeight = 7;
-// https://www.kugellager-shop.net/mr-61710-2rs-61710rs-kugellager-62x50x6.html
-shelfWalls = 20;
-shelfSize = [ 335, 390, 335 ];
-slipRingStatorLength = 36;
-slipRingStatorFrontLength = 6;
-slipRingStatorDia = 32.8;
-slipRingStatorMountDia = 44.8;
-slipRingRotorLength = 8;
-slipRingRotorDia = 9.9;
-
-taperedBearingFullHeight=20.75;
-taperedBearingDia = 72.4;
-taperedBearingHeight = 14;
-taperedBearingInnerDia=30;
-taperedBearingInnerHeight = 19;
-baseHeight = 10;
-baseGap = taperedBearingFullHeight - taperedBearingHeight;
-baseDia = 150;
-
-
-// https://www.amazon.de/3-Draht-Schleifring-Mini-Schleifring-Dr%C3%A4hte-Windkraftanlage/dp/B07KW68JSF
 
 module nema()
 {
