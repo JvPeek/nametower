@@ -13,7 +13,6 @@ module shelf()
     translate([ 0, 0, shelfSize[2] / 2 - overlap * 2 ]) color([ 1, 1, 1 ]) difference()
     {
         cube([ shelfSize[0] + shelfWalls * 2, shelfSize[1], shelfSize[2] + shelfWalls * 2 ], center = true);
-
         cube([ shelfSize[0], shelfSize[1] + overlap * 2, shelfSize[2] ], center = true);
     }
 }
@@ -53,7 +52,7 @@ module render(render, cutopen = false)
 {
     difference()
     {
-       
+
         union()
         {
             displayCheck("shelf") shelf();
@@ -64,8 +63,7 @@ module render(render, cutopen = false)
                 translate([ 0, 0, 20 + (height + wall) * a ]) displayCheck(str("level", a)) level(a);
                 translate([ 0, 0, 20 + (height + wall) * a ]) displayCheck("levels") level(a);
             }
-            displayCheck("nametag") translate([ 0, -sideSize/1.5, -19 ]) nametag(name, false);
-
+            displayCheck("nametag") translate([ 0, -sideSize / 1.5, -19 ]) nametag(name, false);
         }
 
         if (cutopen)
