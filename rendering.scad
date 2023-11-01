@@ -6,6 +6,7 @@ include <base.scad>
 include <frame.scad>
 include <nametags.scad>
 include <skeleton.scad>
+include <tower.scad>
 
 module shelf()
 {
@@ -26,12 +27,8 @@ module level(level = 1)
         union()
         {
             frame();
-            translate([ 0, 0, wall ])
-
-                nametags();
-            translate([ 0, 0, wall + 0 ])
-
-                clips();
+            translate([ 0, 0, wall ]) nametags();
+            translate([ 0, 0, wall + 0 ]) clips();
             translate([ 0, 0, 0 ]) if (level == 0)
             {
                 baseSkeleton();
@@ -56,58 +53,21 @@ module render(render, cutopen = false)
 {
     difference()
     {
-
-        if (render == "level")
+       
+        union()
         {
-            level();
-        }
-        if (render == "baselevel")
-        {
-            level(0);
-        }
-        if (render == "toplevel")
-        {
-            // level(levels-1);
-            topSkeleton();
-        }
-
-        if (render == "tower")
-        {
-            if (shelf)
+            displayCheck("shelf") shelf();
+            displayCheck("tower") tower();
+            displayCheck("base") base();
+            for (a = [0:levels - 1])
             {
-                shelf();
+                translate([ 0, 0, 20 + (height + wall) * a ]) displayCheck(str("level", a)) level(a);
+                translate([ 0, 0, 20 + (height + wall) * a ]) displayCheck("levels") level(a);
             }
-            rotate([ 0, 0, $t * 360 / 6 ]) union()
-            {
-                translate([ 0, 0, baseHeight ]) for (a = [0:levels - 1])
-                {
-                    translate([ 0, 0, (height + wall) * a ]) level(a);
-                }
-                base();
-            }
-        }
-        if (render == "base")
-        {
-            difference()
-            {
+            displayCheck("nametag") translate([ 0, -sideSize/1.5, -19 ]) nametag(name, false);
 
-                base();
-            }
         }
 
-        if (render == "nametag")
-        {
-            translate([ 0, 0, -19 ]) nametag(name, false);
-        }
-
-        if (render == "skeleton")
-        {
-            regularSkeleton();
-        }
-        if (render == "frame") {
-            singleSegment(sides=6)
-            frame();
-        }
         if (cutopen)
         {
             translate([ 0, 0, -overlap ])

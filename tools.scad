@@ -1,3 +1,10 @@
+module displayCheck(needle, haystack=renderList) {
+    results = search([needle], haystack,0);
+    
+    if (len(results[0]) > 0) {
+        children();
+    }
+}
 
 module spreadEverywhere(offset=0) {
     for(a=[0:360/sides:360]) {
