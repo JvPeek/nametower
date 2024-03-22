@@ -1,4 +1,4 @@
-
+renderList=["base", "level0"];
 render = "base";
 name = "CrazyGermanOtaku";
 shelf = false;
